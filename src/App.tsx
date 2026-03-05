@@ -151,7 +151,8 @@ function App() {
     { icon: Package, name: 'Doors & Fittings', items: 'Wooden Doors, Metal Frames, Hardware', image: 'https://media.istockphoto.com/id/1265555577/photo/window-selection.jpg?s=612x612&w=is&k=20&c=70_BVZZy9zwWnEMRkL2rFcP1jc9GDihLegHt4xVF9Rc=' },
     { icon: Lock, name: 'Security', items: 'Locks, Hinges, Padlocks, Chains', image: 'https://images.unsplash.com/photo-1754414266760-f21ba503ce9f?q=80&w=1697&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
   
-    { icon: Leaf, name: 'Garden & Decoration', items: 'Landscaping, Pavers, Outdoor Accessories', image: src="/gardening_ts.png"},
+    { icon: Leaf, name: 'Garden & Decoration', items: 'Landscaping, Pavers, Outdoor Accessories', image: '/gardening_ts.png'}
+  ];
 
   const trustedBrands = [
     { name: 'INCGO', logo: 'https://seeklogo.com/free-vector-logos/ingco' },
