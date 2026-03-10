@@ -6,6 +6,7 @@ function App() {
   const [scrolled, setScrolled] = useState(false);
   const [cartCount, setCartCount] = useState(0);
   const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [newsletterBranch, setNewsletterBranch] = useState('Dwarsloop');
   const [quoteData, setQuoteData] = useState({ name: '', email: '', phone: '', projectDetails: '', honeypot: '' });
   const [newsletterLoading, setNewsletterLoading] = useState(false);
   const [quoteLoading, setQuoteLoading] = useState(false);
@@ -33,7 +34,7 @@ function App() {
     try {
       const { error } = await supabase
         .from('newsletter_subscribers')
-        .insert([{ email: newsletterEmail }]);
+        .insert([{ email: newsletterEmail, branch: newsletterBranch }]);
 
       if (error) {
         if (error.code === '23505') {
@@ -44,6 +45,7 @@ function App() {
       } else {
         setNewsletterMessage('Thank you for subscribing!');
         setNewsletterEmail('');
+        setNewsletterBranch('Dwarsloop');
       }
     } catch {
       setNewsletterMessage('Error subscribing. Please try again.');
@@ -663,15 +665,28 @@ function App() {
               </p>
             </div>
 
-            <form onSubmit={handleNewsletterSubmit} className="flex flex-col sm:flex-row gap-3">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                value={newsletterEmail}
-                onChange={(e) => setNewsletterEmail(e.target.value)}
-                className="flex-1 px-6 py-4 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-300"
-                required
-              />
+            <form onSubmit={handleNewsletterSubmit} className="flex flex-col gap-3 max-w-2xl mx-auto">
+              <div className="flex flex-col sm:flex-row gap-3">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
+                  className="flex-1 px-6 py-4 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-orange-300"
+                  required
+                />
+                <select
+                  value={newsletterBranch}
+                  onChange={(e) => setNewsletterBranch(e.target.value)}
+                  className="px-6 py-4 rounded-lg text-gray-900 font-medium focus:outline-none focus:ring-2 focus:ring-orange-300 bg-white hover:bg-gray-50 transition-colors cursor-pointer"
+                >
+                  <option value="Dwarsloop">Dwarsloop</option>
+                  <option value="Dayizenza">Dayizenza</option>
+                  <option value="Kwamhlanga">Kwamhlanga</option>
+                  <option value="Elukwatini">Elukwatini</option>
+                  <option value="Numbi">Numbi (MEGA)</option>
+                </select>
+              </div>
               <button
                 type="submit"
                 disabled={newsletterLoading}
