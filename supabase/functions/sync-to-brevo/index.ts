@@ -15,11 +15,11 @@ const BREVO_API_KEY = Deno.env.get("BREVO_API_KEY");
 const BREVO_API_URL = "https://api.brevo.com/v3";
 
 const branchListIds: Record<string, number> = {
-  "Dwarsloop": 2,
+  "Dwarsloop": 6,
   "Dayizenza": 3,
-  "Kwamhlanga": 4,
-  "Elukwatini": 5,
-  "Numbi": 6,
+  "Kwamhlanga": 5,
+  "Elukwatini": 4,
+  "Numbi": 7,
 };
 
 async function addContactToBrevo(email: string, branch: string): Promise<void> {
