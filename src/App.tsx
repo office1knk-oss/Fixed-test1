@@ -43,6 +43,23 @@ function App() {
           setNewsletterMessage('Error subscribing. Please try again.');
         }
       } else {
+        try {
+          const apiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/sync-to-brevo`;
+          await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
+            },
+            body: JSON.stringify({
+              email: newsletterEmail,
+              branch: newsletterBranch,
+            }),
+          });
+        } catch (brevoError) {
+          console.error('Brevo sync error:', brevoError);
+        }
+
         setNewsletterMessage('Thank you for subscribing!');
         setNewsletterEmail('');
         setNewsletterBranch('Dwarsloop');
