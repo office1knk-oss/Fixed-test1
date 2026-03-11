@@ -34,7 +34,10 @@ function App() {
     try {
       const { error } = await supabase
         .from('newsletter_subscribers')
-        .insert([{ email: newsletterEmail, branch: newsletterBranch }]);
+        .insert([{
+          email: newsletterEmail,
+          branch: newsletterBranch
+        }]);
 
       if (error) {
         if (error.code === '23505') {
